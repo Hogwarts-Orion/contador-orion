@@ -3,25 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hogwarts Orion - Contador Oficial</title>
+    <title>Hogwarts Orion - Oficial</title>
     <style>
-        /* Fondo estrellado de alta visibilidad */
-        body { 
-            background-color: #000; 
-            background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 40px),
-                radial-gradient(white, rgba(255,255,255,.1) 1.5px, transparent 60px);
-            background-size: 200px 200px, 350px 350px;
-            color: #d4af37; 
-            font-family: 'Georgia', serif; 
+        body, html {
+            height: 100%; margin: 0;
             display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; margin: 0; padding: 20px;
+            background-color: #000;
+            /* Usamos la imagen del Gran Comedor como fondo total */
+            background-image: url('https://i.ibb.co/tMb195W/402656.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Capa oscura para que el texto resalte sobre el fondo */
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); z-index: 1;
         }
 
         .card {
-            background: rgba(0, 0, 0, 0.92);
+            position: relative; z-index: 10;
+            background: rgba(10, 10, 10, 0.9);
             border: 2px solid #d4af37;
-            border-radius: 30px;
-            padding: 30px;
-            width: 100%;
+            border-radius: 25px;
+            padding: 25px;
+            width: 90%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .logo-box {
+            width: 130px; height: 130px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            /* Tu logo oficial */
+            background: #000 url('https://i.ibb.co/C5fH4p0/402541.jpg') no-repeat center;
+            background-size: cover;
+            box-shadow: 0 0 15px #d4af37;
+        }
+
+        h1 { color: #d4af37; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 15px 0; }
+
+        textarea {
+            width: 100%; height: 220px;
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid #d4af37;
+            border-radius: 12px;
+            color: #fff;
+            padding: 12px;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+            resize: none;
+        }
+
+        .stats { display: flex; gap: 12px; margin-top: 20px; }
+        
+        .box {
+            flex: 1; background: rgba(212, 175, 55, 0.1);
+            border: 1px solid #d4af37;
+            padding: 12px; border-radius: 12px;
+        }
+
+        .val { font-size: 28px; font-weight: bold; color: #fff; display: block; text-shadow: 0 0 8px #d4af37; }
+        .lab { font-size: 10px; text-transform: uppercase; color: #d4af37; letter-spacing: 1px; }
+
+        .footer-text {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #d4af37;
+            text-shadow: 0 0 10px #d4af37;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="card">
+        <div class="logo-box"></div>
+        <h1>Hogwarts Orion</h1>
+
+        <textarea id="area" placeholder="Escribe aquí tu rol..." oninput="count()"></textarea>
+
+        <div class="stats">
+            <div class="box">
+                <span class="lab">Caracteres</span>
+                <span id="chars" class="val">0</span>
+            </div>
+            <div class="box">
+                <span class="lab">Líneas (26)</span>
+                <span id="lines" class="val">0</span>
+            </div>
+        </div>
+
+        <div class="footer-text">Gran Comedor H.O.</div>
+    </div>
+
+    <script>
+        function count() {
+            const text = document.getElementById('area').value;
+            const total = text.length;
+            // Matemática exacta: 26 caracteres = 1 línea. 1430 = 55 líneas.
+            const res = total > 0 ? Math.ceil(total / 26) : 0;
             
+            document.getElementById('chars').innerText = total;
+            document.getElementById('lines').innerText = res;
+        }
+    </script>
+</body>
+</html>
