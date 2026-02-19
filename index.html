@@ -3,95 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hogwarts Orion - Oficial</title>
+    <title>Hogwarts Orion - Contador Oficial</title>
     <style>
-        /* Fondo con estrellas animadas */
+        /* Fondo estrellado de alta visibilidad */
         body { 
             background-color: #000; 
-            margin: 0; padding: 15px;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.1) 1.5px, transparent 60px);
+            background-size: 200px 200px, 350px 350px;
+            color: #d4af37; 
+            font-family: 'Georgia', serif; 
             display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; font-family: 'Georgia', serif;
-            overflow: hidden;
-        }
-
-        /* Efecto de estrellas de fondo */
-        .stars {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000 url('https://i.ibb.co/cybT969/stars.png') repeat;
-            z-index: -1; opacity: 0.5;
+            min-height: 100vh; margin: 0; padding: 20px;
         }
 
         .card {
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(0, 0, 0, 0.92);
             border: 2px solid #d4af37;
-            border-radius: 25px;
+            border-radius: 30px;
             padding: 30px;
             width: 100%;
-            max-width: 380px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-            z-index: 10;
-        }
-
-        /* Contenedor del logo para asegurar que se vea */
-        .logo-box {
-            width: 140px; height: 140px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            border: 2px solid #d4af37;
-            background: #000 url('https://i.ibb.co/C5fH4p0/402541.jpg') no-repeat center;
-            background-size: cover;
-            box-shadow: 0 0 15px #d4af37;
-        }
-
-        h1 { color: #d4af37; font-size: 22px; letter-spacing: 2px; margin: 0 0 20px 0; text-transform: uppercase; }
-
-        textarea {
-            width: 100%; height: 250px; background: #0a0a0a; color: #fff; 
-            border: 1px solid #d4af37; border-radius: 12px; padding: 15px; 
-            font-size: 16px; box-sizing: border-box; outline: none; resize: none;
-        }
-
-        .stats { display: flex; gap: 15px; margin-top: 25px; }
-        .box { 
-            flex: 1; background: rgba(212, 175, 55, 0.1); 
-            border: 1px solid #d4af37; padding: 12px; border-radius: 15px; 
-        }
-        .val { font-size: 28px; font-weight: bold; color: #fff; display: block; }
-        .lab { font-size: 10px; text-transform: uppercase; color: #d4af37; }
-    </style>
-</head>
-<body>
-    <div class="stars"></div>
-    <div class="card">
-        <div class="logo-box"></div>
-        
-        <h1>Hogwarts Orion</h1>
-        
-        <textarea id="texto" placeholder="Pega tu rol aquí..." oninput="contar()"></textarea>
-        
-        <div class="stats">
-            <div class="box">
-                <span class="lab">Caracteres</span>
-                <span id="c" class="val">0</span>
-            </div>
-            <div class="box">
-                <span class="lab">Líneas (26)</span>
-                <span id="l" class="val">0</span>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function contar() {
-            var input = document.getElementById('texto').value;
-            var total = input.length;
-            // Matemática exacta pedida: 26 carac = 1 línea
-            var lineas = total > 0 ? Math.ceil(total / 26) : 0;
             
-            document.getElementById('c').innerText = total;
-            document.getElementById('l').innerText = lineas;
-        }
-    </script>
-</body>
-</html>
