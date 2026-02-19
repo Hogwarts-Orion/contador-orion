@@ -1,42 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador de Líneas - Hogwarts Orion</title>
-    <style>
-        body { 
-            background-color: #050505; 
-            background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
-            background-size: 550px 550px, 350px 350px;
-            color: #d4af37; font-family: 'Courier New', Courier, monospace; text-align: center; padding: 20px; 
+<script>
+    function contar() {
+        const texto = document.getElementById('textoCaja').value;
+        
+        // Eliminamos los espacios vacíos al inicio y final para un conteo justo
+        const totalCaracteres = texto.trim().length;
+        
+        // Dividimos el total de caracteres por 27 (el estándar que me pediste)
+        // Usamos Math.ceil para que si sobra un poquito, cuente como otra línea
+        const lineasCalculadas = Math.ceil(totalCaracteres / 27);
+        
+        if (totalCaracteres === 0) {
+            document.getElementById('resultado').innerText = "Lineas totales: 0";
+        } else {
+            document.getElementById('resultado').innerText = "Lineas totales: " + lineasCalculadas;
         }
-        .box { 
-            border: 2px solid #d4af37; border-radius: 15px; background: rgba(0, 0, 0, 0.8); 
-            padding: 20px; max-width: 500px; margin: auto; box-shadow: 0px 0px 20px #d4af37; 
-        }
-        .logo { width: 120px; border-radius: 50%; border: 2px solid #d4af37; margin-bottom: 10px; }
-        textarea { 
-            width: 90%; height: 200px; border: 1px solid #d4af37; border-radius: 8px; 
-            padding: 10px; font-size: 16px; margin-top: 10px; background: #111; color: #fff;
-        }
-        .resultado { font-size: 28px; color: #fff; font-weight: bold; margin-top: 20px; text-shadow: 0 0 10px #d4af37; }
-    </style>
-</head>
-<body>
-    <div class="box">
-        <img src="URL_DE_TU_LOGO_AQUI" class="logo" alt="Hogwarts Orion">
-        <h2>✨ Contador de Líneas ✨</h2>
-        <p>Escribe tu historia, Merodeador...</p>
-        <textarea id="textoCaja" placeholder="Pega tu rol aquí..." oninput="contar()"></textarea>
-        <div class="resultado" id="resultado">Lineas totales: 0</div>
-    </div>
-    <script>
-        function contar() {
-            const texto = document.getElementById('textoCaja').value;
-            const lineas = texto.split(/\r?\n/).filter(line => line.trim() !== "").length;
-            document.getElementById('resultado').innerText = "Lineas totales: " + lineas;
-        }
-    </script>
-</body>
-</html>
+    }
+</script>
