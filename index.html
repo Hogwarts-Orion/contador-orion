@@ -3,58 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador Orion</title>
+    <title>Contador Orion - Precisión Total</title>
     <style>
         body { 
             background-color: #050505; 
             background-image: radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 40px);
             background-size: 250px 250px;
-            color: #d4af37; font-family: sans-serif; text-align: center; padding: 20px;
+            color: #d4af37; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px;
         }
         .card {
             background: #000; border: 2px solid #d4af37; border-radius: 20px;
-            padding: 20px; max-width: 400px; margin: auto; box-shadow: 0 0 15px #d4af37;
+            padding: 20px; max-width: 420px; margin: auto; box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
         }
-        .logo { width: 120px; height: 120px; border-radius: 50%; border: 2px solid #d4af37; margin-bottom: 15px; }
+        .logo { width: 130px; height: 130px; border-radius: 50%; border: 2px solid #d4af37; margin-bottom: 15px; object-fit: cover; }
         textarea {
-            width: 100%; height: 200px; background: #1a1a1a; color: #fff; border: 1px solid #d4af37;
-            border-radius: 10px; padding: 10px; font-size: 16px; box-sizing: border-box; outline: none;
+            width: 100%; height: 250px; background: #111; color: #fff; border: 1px solid #d4af37;
+            border-radius: 12px; padding: 15px; font-size: 16px; box-sizing: border-box; outline: none; resize: none;
         }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-        .stat { border: 1px solid #d4af37; padding: 10px; border-radius: 10px; background: rgba(212,175,55,0.1); }
-        .val { font-size: 24px; font-weight: bold; color: #fff; display: block; }
-        .lab { font-size: 10px; text-transform: uppercase; color: #d4af37; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
+        .stat { border: 1px solid #d4af37; padding: 15px; border-radius: 12px; background: rgba(212,175,55,0.15); }
+        .val { font-size: 30px; font-weight: bold; color: #fff; display: block; text-shadow: 0 0 8px #d4af37; }
+        .lab { font-size: 11px; text-transform: uppercase; color: #d4af37; letter-spacing: 1px; }
     </style>
 </head>
 <body>
     <div class="card">
-        <img src="https://i.ibb.co/C5fH4p0/402541.jpg" class="logo">
-        <h2 style="margin:0 0 15px 0;">Hogwarts Orion</h2>
+        <img src="https://i.ibb.co/C5fH4p0/402541.jpg" class="logo" alt="Hogwarts Orion">
+        <h2 style="margin:0 0 20px 0; letter-spacing: 2px;">HOGWARTS ORION</h2>
         
-        <textarea id="entrada" placeholder="Escribe aquí..." oninput="contar()"></textarea>
+        <textarea id="texto" placeholder="Pega tu rol aquí..." oninput="calcular()"></textarea>
         
         <div class="grid">
             <div class="stat">
                 <span class="lab">Caracteres</span>
-                <span id="res_c" class="val">0</span>
+                <span id="c_total" class="val">0</span>
             </div>
             <div class="stat">
                 <span class="lab">Líneas (26)</span>
-                <span id="res_l" class="val">0</span>
+                <span id="l_total" class="val">0</span>
             </div>
         </div>
     </div>
 
     <script>
-        function contar() {
-            var texto = document.getElementById('entrada').value;
-            var cantidad = texto.length;
+        function calcular() {
+            const input = document.getElementById('texto').value;
+            // Contamos cada letra, espacio y salto de línea
+            const totalC = input.length;
             
-            // Matemática exacta: 1-26 = 1 línea | 27 = 2 líneas
-            var lineas = (cantidad > 0) ? Math.ceil(cantidad / 26) : 0;
+            // MATEMÁTICA EXACTA PEDIDA:
+            // Dividimos por 26 y usamos Math.ceil para que 27 caracteres sean 2 líneas.
+            // Esto cumple que 1430 caracteres = 55 líneas exactas.
+            const totalL = Math.ceil(totalC / 26);
             
-            document.getElementById('res_c').innerHTML = cantidad;
-            document.getElementById('res_l').innerHTML = lineas;
+            document.getElementById('c_total').innerText = totalC;
+            document.getElementById('l_total').innerText = totalL;
         }
     </script>
 </body>
