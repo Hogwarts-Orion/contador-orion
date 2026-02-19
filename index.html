@@ -8,7 +8,7 @@
         body { 
             background-color: #050505; 
             background-image: radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 40px);
-            background-size: 200px 200px;
+            background-size: 250px 250px;
             color: #d4af37; font-family: sans-serif; text-align: center; padding: 20px;
         }
         .card {
@@ -31,30 +31,30 @@
         <img src="https://i.ibb.co/C5fH4p0/402541.jpg" class="logo">
         <h2 style="margin:0 0 15px 0;">Hogwarts Orion</h2>
         
-        <textarea id="area" placeholder="Escribe aquí..." oninput="magic()"></textarea>
+        <textarea id="entrada" placeholder="Escribe aquí..." oninput="contar()"></textarea>
         
         <div class="grid">
             <div class="stat">
                 <span class="lab">Caracteres</span>
-                <span id="c" class="val">0</span>
+                <span id="res_c" class="val">0</span>
             </div>
             <div class="stat">
                 <span class="lab">Líneas (26)</span>
-                <span id="l" class="val">0</span>
+                <span id="res_l" class="val">0</span>
             </div>
         </div>
     </div>
 
     <script>
-        function magic() {
-            const txt = document.getElementById('area').value;
-            const total = txt.length;
+        function contar() {
+            var texto = document.getElementById('entrada').value;
+            var cantidad = texto.length;
             
-            // Lógica: 1-26 = 1 línea | 27 = 2 líneas
-            const lines = total > 0 ? Math.ceil(total / 26) : 0;
+            // Matemática exacta: 1-26 = 1 línea | 27 = 2 líneas
+            var lineas = (cantidad > 0) ? Math.ceil(cantidad / 26) : 0;
             
-            document.getElementById('c').innerText = total;
-            document.getElementById('l').innerText = lines;
+            document.getElementById('res_c').innerHTML = cantidad;
+            document.getElementById('res_l').innerHTML = lineas;
         }
     </script>
 </body>
