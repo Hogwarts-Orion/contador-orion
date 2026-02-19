@@ -3,56 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hogwarts Orion - Contador Oficial</title>
+    <title>Contador Orion</title>
     <style>
         body { 
             background-color: #050505; 
-            background-image: radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 40px);
-            background-size: 300px 300px;
-            color: #d4af37; font-family: 'Arial', sans-serif; text-align: center; padding: 20px;
+            background-image: radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 40px);
+            background-size: 200px 200px;
+            color: #d4af37; font-family: sans-serif; text-align: center; padding: 20px;
         }
-        .main-card {
-            background: rgba(0, 0, 0, 0.9); border: 2px solid #d4af37; border-radius: 20px;
-            padding: 20px; max-width: 400px; margin: auto; box-shadow: 0 0 20px #d4af37;
+        .card {
+            background: #000; border: 2px solid #d4af37; border-radius: 20px;
+            padding: 20px; max-width: 400px; margin: auto; box-shadow: 0 0 15px #d4af37;
         }
-        .logo-orion { width: 150px; height: 150px; border-radius: 50%; border: 2px solid #d4af37; margin-bottom: 15px; object-fit: cover; }
+        .logo { width: 120px; height: 120px; border-radius: 50%; border: 2px solid #d4af37; margin-bottom: 15px; }
         textarea {
-            width: 100%; height: 250px; background: #111; color: #fff; border: 1px solid #d4af37;
-            border-radius: 10px; padding: 10px; font-size: 16px; box-sizing: border-box; resize: none;
+            width: 100%; height: 200px; background: #1a1a1a; color: #fff; border: 1px solid #d4af37;
+            border-radius: 10px; padding: 10px; font-size: 16px; box-sizing: border-box; outline: none;
         }
-        .counter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-        .stat { background: rgba(212, 175, 55, 0.1); padding: 10px; border-radius: 10px; border: 1px solid #d4af37; }
-        .num { font-size: 28px; font-weight: bold; color: #fff; display: block; }
-        .txt { font-size: 11px; text-transform: uppercase; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .stat { border: 1px solid #d4af37; padding: 10px; border-radius: 10px; background: rgba(212,175,55,0.1); }
+        .val { font-size: 24px; font-weight: bold; color: #fff; display: block; }
+        .lab { font-size: 10px; text-transform: uppercase; color: #d4af37; }
     </style>
 </head>
 <body>
-    <div class="main-card">
-        <img src="https://i.ibb.co/C5fH4p0/402541.jpg" class="logo-orion" alt="Hogwarts Orion">
-        <h2>Hogwarts Orion</h2>
-        <textarea id="box" placeholder="Pega tu rol aquí..." oninput="update()"></textarea>
-        <div class="counter-grid">
+    <div class="card">
+        <img src="https://i.ibb.co/C5fH4p0/402541.jpg" class="logo">
+        <h2 style="margin:0 0 15px 0;">Hogwarts Orion</h2>
+        
+        <textarea id="area" placeholder="Escribe aquí..." oninput="magic()"></textarea>
+        
+        <div class="grid">
             <div class="stat">
-                <span class="txt">Caracteres</span>
-                <span id="c" class="num">0</span>
+                <span class="lab">Caracteres</span>
+                <span id="c" class="val">0</span>
             </div>
             <div class="stat">
-                <span class="txt">Líneas (26)</span>
-                <span id="l" class="num">0</span>
+                <span class="lab">Líneas (26)</span>
+                <span id="l" class="val">0</span>
             </div>
         </div>
     </div>
 
     <script>
-        function update() {
-            const val = document.getElementById('box').value;
-            const total = val.length;
+        function magic() {
+            const txt = document.getElementById('area').value;
+            const total = txt.length;
             
-            // CÁLCULO EXACTO:
-            // Math.ceil(total / 26) asegura que:
-            // 26 carac = 1 línea.
-            // 27 carac = 2 líneas.
-            const lines = Math.ceil(total / 26);
+            // Lógica: 1-26 = 1 línea | 27 = 2 líneas
+            const lines = total > 0 ? Math.ceil(total / 26) : 0;
             
             document.getElementById('c').innerText = total;
             document.getElementById('l').innerText = lines;
