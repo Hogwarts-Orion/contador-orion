@@ -3,72 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador Oficial - Hogwarts Orion</title>
+    <title>Contador Orion - Oficial</title>
     <style>
         body { 
-            background-color: #0a0a0a; 
-            background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px);
-            background-size: 550px 550px;
+            background-color: #050505; 
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.3) 1.5px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 40px);
+            background-size: 400px 400px, 250px 250px;
             color: #d4af37; 
-            font-family: sans-serif; 
+            font-family: 'Garamond', serif; 
             text-align: center; 
-            margin: 0; padding: 20px;
+            padding: 20px;
+            margin: 0;
         }
         .container {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.85);
             border: 2px solid #d4af37;
             border-radius: 20px;
-            padding: 20px;
-            max-width: 400px; /* Esto simula el ancho del celular */
-            margin: auto;
-        }
-        .logo { width: 100px; height: 100px; border-radius: 50%; border: 2px solid #d4af37; margin-bottom: 10px; }
-        
-        /* El truco está aquí: el textarea debe tener este wrap y ancho */
-        textarea {
-            width: 100%;
-            height: 300px;
-            background: #fdf6e3; /* Color cremita como tu imagen original */
-            color: #5c4033;
-            border: 1px solid #d4af37;
-            border-radius: 5px;
-            padding: 10px;
-            font-size: 16px;
-            line-height: 1.2;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        .resultado { font-size: 24px; margin-top: 15px; color: #fff; text-shadow: 0 0 5px #d4af37; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <img src="https://i.ibb.co/C5fH4p0/402541.jpg" class="logo">
-        <h2>Hogwarts Orion</h2>
-        <p>Contador Estilo WhatsApp</p>
-        
-        <div id="repaso" style="visibility: hidden; position: absolute; width: 350px; font-size: 16px; line-height: 1.2; white-space: pre-wrap; word-wrap: break-word; font-family: Arial, sans-serif; padding: 10px;"></div>
-        
-        <textarea id="textoCaja" placeholder="Pega tu rol aquí..." oninput="contar()"></textarea>
-        <div class="resultado" id="resultado">Lineas totales: 0</div>
-    </div>
-
-    <script>
-        function contar() {
-            const textarea = document.getElementById('textoCaja');
-            const div = document.getElementById('repaso');
-            
-            // Copiamos el contenido al div oculto para medir su altura
-            div.innerText = textarea.value;
-            
-            // Calculamos las líneas dividiendo la altura total por la altura de una línea (aprox 19px)
-            const alturaLinea = 19.2; 
-            const lineas = Math.floor(div.offsetHeight / alturaLinea);
-            
-            document.getElementById('resultado').innerText = "Lineas totales: " + (textarea.value ? lineas : 0);
-        }
-    </script>
-</body>
-</html>
+            padding: 25px;
+            max-width: 90%;
+            margin: 20px auto;
+            box-shadow: 0 0 25px rgba(212,
+                                      
