@@ -3,42 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador Orion - Precisión</title>
+    <title>Contador Oficial - Hogwarts Orion</title>
     <style>
         body { 
             background-color: #050505; 
             background-image: 
-                radial-gradient(white, rgba(255,255,255,.3) 1.5px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.2) 1.5px, transparent 30px),
                 radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 40px);
             background-size: 400px 400px, 250px 250px;
-            color: #d4af37; font-family: 'Garamond', serif; text-align: center; padding: 20px; margin: 0;
+            color: #d4af37; font-family: 'Georgia', serif; text-align: center; padding: 20px; margin: 0;
         }
         .container {
             background: rgba(0, 0, 0, 0.9); border: 2px solid #d4af37; border-radius: 20px;
-            padding: 25px; max-width: 90%; margin: 20px auto; box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+            padding: 25px; max-width: 450px; margin: 20px auto; box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
         }
         .logo { width: 140px; height: 140px; border-radius: 50%; border: 3px solid #d4af37; margin-bottom: 15px; object-fit: cover; }
         textarea {
-            width: 100%; height: 250px; background: #111; border: 1px solid #d4af37;
+            width: 100%; height: 280px; background: #111; border: 1px solid #d4af37;
             border-radius: 10px; color: #fff; padding: 15px; font-size: 16px; box-sizing: border-box;
+            outline: none; resize: none;
         }
-        .stats-box { margin-top: 20px; display: flex; justify-content: space-around; }
-        .stat { background: rgba(212, 175, 55, 0.1); border: 1px solid #d4af37; padding: 15px; border-radius: 10px; min-width: 140px; }
-        .stat-val { font-size: 28px; font-weight: bold; color: #fff; display: block; }
-        .stat-label { font-size: 12px; text-transform: uppercase; color: #d4af37; letter-spacing: 1px; }
+        .stats-container { margin-top: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .stat-card { background: rgba(212, 175, 55, 0.15); border: 1px solid #d4af37; padding: 15px; border-radius: 12px; }
+        .stat-value { font-size: 32px; font-weight: bold; color: #fff; display: block; text-shadow: 0 0 10px #d4af37; }
+        .stat-label { font-size: 11px; text-transform: uppercase; color: #d4af37; letter-spacing: 2px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://i.ibb.co/C5fH4p0/402541.jpg" class="logo">
-        <h1>✨ Hogwarts Orion ✨</h1>
-        <textarea id="input" placeholder="Pega tu rol aquí..." oninput="calcular()"></textarea>
-        <div class="stats-box">
-            <div class="stat">
-                <span class="stat-label">Total Caracteres</span>
-                <span id="charCount" class="stat-val">0</span>
+        <img src="https://i.ibb.co/C5fH4p0/402541.jpg" class="logo" alt="Hogwarts Orion">
+        <h2 style="margin-top: 0;">Hogwarts Orion</h2>
+        
+        <textarea id="textoCaja" placeholder="Escribe o pega tu rol aquí..." oninput="contar()"></textarea>
+        
+        <div class="stats-container">
+            <div class="stat-card">
+                <span class="stat-label">Caracteres</span>
+                <span id="chars" class="stat-value">0</span>
             </div>
-            <div class="stat">
-                <span class="stat-label">Líneas (26 c/u)</span>
-                <span id="lineCount
+            <div class="stat-card">
+                <span class="stat-label">Líneas (26)</span>
+                <span id="lines" class="stat-
                     
