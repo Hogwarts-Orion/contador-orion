@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hogwarts Orion - Oficial</title>
+    <title>Hogwarts Orion - Contador</title>
     <style>
         body, html {
             height: 100%; margin: 0;
             display: flex; justify-content: center; align-items: center;
             background-color: #000;
-            /* Usamos la imagen del Gran Comedor como fondo total */
+            /* Imagen del castillo como fondo principal */
             background-image: url('https://i.ibb.co/tMb195W/402656.jpg');
             background-size: cover;
             background-position: center;
@@ -17,64 +17,63 @@
             font-family: 'Georgia', serif;
         }
 
-        /* Capa oscura para que el texto resalte sobre el fondo */
         .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6); z-index: 1;
+            background: rgba(0, 0, 0, 0.7); z-index: 1;
         }
 
         .card {
             position: relative; z-index: 10;
-            background: rgba(10, 10, 10, 0.9);
+            background: #0a0a0a;
             border: 2px solid #d4af37;
-            border-radius: 25px;
-            padding: 25px;
-            width: 90%;
-            max-width: 380px;
+            border-radius: 40px;
+            padding: 30px;
+            width: 85%;
+            max-width: 360px;
             text-align: center;
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
         }
 
-        .logo-box {
-            width: 130px; height: 130px;
-            margin: 0 auto 15px;
+        .logo-circle {
+            width: 140px; height: 140px;
+            margin: 0 auto 20px;
             border-radius: 50%;
-            border: 2px solid #d4af37;
-            /* Tu logo oficial */
+            border: 3px solid #d4af37;
+            /* Enlace directo al logo del Mes del Amor */
             background: #000 url('https://i.ibb.co/C5fH4p0/402541.jpg') no-repeat center;
             background-size: cover;
             box-shadow: 0 0 15px #d4af37;
         }
 
-        h1 { color: #d4af37; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 15px 0; }
+        h2 { color: #d4af37; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 20px 0; }
 
         textarea {
-            width: 100%; height: 220px;
-            background: rgba(20, 20, 20, 0.9);
-            border: 1px solid #d4af37;
-            border-radius: 12px;
+            width: 100%; height: 240px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 20px;
             color: #fff;
-            padding: 12px;
+            padding: 15px;
             font-size: 16px;
             box-sizing: border-box;
             outline: none;
             resize: none;
         }
 
-        .stats { display: flex; gap: 12px; margin-top: 20px; }
+        .stats-grid { display: flex; gap: 10px; margin-top: 25px; }
         
-        .box {
-            flex: 1; background: rgba(212, 175, 55, 0.1);
-            border: 1px solid #d4af37;
-            padding: 12px; border-radius: 12px;
+        .stat-box {
+            flex: 1; background: transparent;
+            border: 1px solid #333;
+            padding: 15px; border-radius: 15px;
         }
 
-        .val { font-size: 28px; font-weight: bold; color: #fff; display: block; text-shadow: 0 0 8px #d4af37; }
+        .val { font-size: 30px; font-weight: bold; color: #fff; display: block; }
         .lab { font-size: 10px; text-transform: uppercase; color: #d4af37; letter-spacing: 1px; }
 
-        .footer-text {
-            margin-top: 20px;
-            font-size: 24px;
+        .footer-title {
+            margin-top: 25px;
+            font-size: 26px;
             font-weight: bold;
             color: #d4af37;
             text-shadow: 0 0 10px #d4af37;
@@ -82,38 +81,24 @@
     </style>
 </head>
 <body>
-
     <div class="overlay"></div>
-
     <div class="card">
-        <div class="logo-box"></div>
-        <h1>Hogwarts Orion</h1>
-
-        <textarea id="area" placeholder="Escribe aquí tu rol..." oninput="count()"></textarea>
-
-        <div class="stats">
-            <div class="box">
-                <span class="lab">Caracteres</span>
-                <span id="chars" class="val">0</span>
-            </div>
-            <div class="box">
-                <span class="lab">Líneas (26)</span>
-                <span id="lines" class="val">0</span>
-            </div>
+        <div class="logo-circle"></div>
+        <h2>Hogwarts Orion</h2>
+        <textarea id="box" placeholder="Escribe aquí tu rol..." oninput="up()"></textarea>
+        <div class="stats-grid">
+            <div class="stat-box"><span class="lab">Caracteres</span><span id="c" class="val">0</span></div>
+            <div class="stat-box"><span class="lab">Líneas (26)</span><span id="l" class="val">0</span></div>
         </div>
-
-        <div class="footer-text">Gran Comedor H.O.</div>
+        <div class="footer-title">Contador Lineas H.O.</div>
     </div>
-
     <script>
-        function count() {
-            const text = document.getElementById('area').value;
-            const total = text.length;
-            // Matemática exacta: 26 caracteres = 1 línea. 1430 = 55 líneas.
-            const res = total > 0 ? Math.ceil(total / 26) : 0;
-            
-            document.getElementById('chars').innerText = total;
-            document.getElementById('lines').innerText = res;
+        function up() {
+            const v = document.getElementById('box').value;
+            const n = v.length;
+            const l = n > 0 ? Math.ceil(n / 26) : 0;
+            document.getElementById('c').innerText = n;
+            document.getElementById('l').innerText = l;
         }
     </script>
 </body>
