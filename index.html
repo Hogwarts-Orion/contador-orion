@@ -8,8 +8,8 @@
         body { 
             margin: 0; height: 100vh; display: flex; align-items: center; justify-content: center;
             background-color: #000;
-            /* FONDO DEL GRAN COMEDOR (Link directo extraído de tu enlace) */
-            background-image: url('https://i.ibb.co/bMh1c0Tx/1771555355884.png"');
+            /* Se corrigieron las comillas extra en el link */
+            background-image: url('https://i.ibb.co/bMh1c0Tx/1771555355884.png');
             background-size: cover; background-position: center;
             font-family: 'Georgia', serif;
         }
@@ -23,14 +23,15 @@
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
         }
 
-        /* LOGO CIRCULAR CON TU LÓGICA DE CSS */
         .logo-circle {
             width: 140px; height: 140px; margin: 0 auto 20px;
             border-radius: 50%; border: 3px solid #d4af37;
-            /* Link directo del logo oficial */
-            background-image: url('https://i.ibb.co/DDq32t55/1771555069500.png"');');
-            background-size: cover;
+            /* Se corrigieron las comillas y puntos y coma extra */
+            background-image: url('https://i.ibb.co/DDq32t55/1771555069500.png');
+            background-size: 80%; /* Ajustado para que no se vea gigante */
+            background-repeat: no-repeat;
             background-position: center;
+            background-color: #000;
             box-shadow: 0 0 15px #d4af37;
         }
 
@@ -62,9 +63,15 @@
     <script>
         function up() {
             const v = document.getElementById('text').value;
-            const n = v.length;
-            /* Regla: 1 línea cada 26 caracteres */
+            
+            // Esta línea elimina los espacios para el conteo
+            const sinEspacios = v.replace(/\s+/g, '');
+            
+            const n = sinEspacios.length;
+            
+            // Calculamos líneas basadas en caracteres reales (sin espacios)
             const l = n > 0 ? Math.ceil(n / 26) : 0;
+            
             document.getElementById('c').innerText = n;
             document.getElementById('l').innerText = l;
         }
