@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hogwarts Orion - Contador</title>
+    <title>Hogwarts Orion - Oficial</title>
     <style>
         body, html {
             height: 100%; margin: 0;
             display: flex; justify-content: center; align-items: center;
-            background-color: #000;
-            /* Imagen del castillo como fondo principal */
+            background-color: #1a1a1a; /* Color de respaldo si falla la imagen */
+            
+            /* REVISA ESTE LINK: Debe ser el 'Enlace directo' de ImgBB */
             background-image: url('https://ibb.co/tMb195WP');
+            
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             font-family: 'Georgia', serif;
         }
 
+        /* Capa para oscurecer el fondo y que la tarjeta resalte */
         .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.7); z-index: 1;
@@ -24,60 +27,47 @@
 
         .card {
             position: relative; z-index: 10;
-            background: #0a0a0a;
+            background: rgba(10, 10, 10, 0.95);
             border: 2px solid #d4af37;
-            border-radius: 40px;
-            padding: 30px;
-            width: 85%;
-            max-width: 360px;
+            border-radius: 35px;
+            padding: 25px;
+            width: 88%;
+            max-width: 370px;
             text-align: center;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
         }
 
         .logo-circle {
-            width: 140px; height: 140px;
-            margin: 0 auto 20px;
+            width: 130px; height: 130px;
+            margin: 0 auto 15px;
             border-radius: 50%;
-            border: 3px solid #d4af37;
-            /* Enlace directo al logo del Mes del Amor */
+            border: 2px solid #d4af37;
+            /* Logo del Mes del Amor */
             background: #000 url('https://ibb.co/tMb195WP') no-repeat center;
             background-size: cover;
-            box-shadow: 0 0 15px #d4af37;
         }
 
-        h2 { color: #d4af37; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 20px 0; }
+        h2 { color: #d4af37; font-size: 20px; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
 
         textarea {
-            width: 100%; height: 240px;
-            background: #111;
-            border: 1px solid #333;
-            border-radius: 20px;
+            width: 100%; height: 230px;
+            background: #000;
+            border: 1px solid #d4af37;
+            border-radius: 15px;
             color: #fff;
-            padding: 15px;
+            padding: 12px;
             font-size: 16px;
             box-sizing: border-box;
             outline: none;
             resize: none;
         }
 
-        .stats-grid { display: flex; gap: 10px; margin-top: 25px; }
-        
-        .stat-box {
-            flex: 1; background: transparent;
-            border: 1px solid #333;
-            padding: 15px; border-radius: 15px;
-        }
+        .stats { display: flex; gap: 10px; margin-top: 20px; }
+        .box { flex: 1; border: 1px solid #d4af37; padding: 12px; border-radius: 12px; background: rgba(212,175,55,0.05); }
+        .val { font-size: 28px; font-weight: bold; color: #fff; display: block; }
+        .lab { font-size: 10px; text-transform: uppercase; color: #d4af37; }
 
-        .val { font-size: 30px; font-weight: bold; color: #fff; display: block; }
-        .lab { font-size: 10px; text-transform: uppercase; color: #d4af37; letter-spacing: 1px; }
-
-        .footer-title {
-            margin-top: 25px;
-            font-size: 26px;
-            font-weight: bold;
-            color: #d4af37;
-            text-shadow: 0 0 10px #d4af37;
-        }
+        .footer { margin-top: 20px; font-size: 24px; font-weight: bold; color: #d4af37; text-shadow: 0 0 8px #d4af37; }
     </style>
 </head>
 <body>
@@ -85,16 +75,16 @@
     <div class="card">
         <div class="logo-circle"></div>
         <h2>Hogwarts Orion</h2>
-        <textarea id="box" placeholder="Escribe aquí tu rol..." oninput="up()"></textarea>
-        <div class="stats-grid">
-            <div class="stat-box"><span class="lab">Caracteres</span><span id="c" class="val">0</span></div>
-            <div class="stat-box"><span class="lab">Líneas (26)</span><span id="l" class="val">0</span></div>
+        <textarea id="text" placeholder="Pega tu rol..." oninput="update()"></textarea>
+        <div class="stats">
+            <div class="box"><span class="lab">Caracteres</span><span id="c" class="val">0</span></div>
+            <div class="box"><span class="lab">Líneas (26)</span><span id="l" class="val">0</span></div>
         </div>
-        <div class="footer-title">Contador Lineas H.O.</div>
+        <div class="footer">Gran Comedor H.O.</div>
     </div>
     <script>
-        function up() {
-            const v = document.getElementById('box').value;
+        function update() {
+            const v = document.getElementById('text').value;
             const n = v.length;
             const l = n > 0 ? Math.ceil(n / 26) : 0;
             document.getElementById('c').innerText = n;
